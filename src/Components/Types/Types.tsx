@@ -30,4 +30,6 @@ export type Pokemon = {
   sprites: PokemonSprites;
   stats: PokemonStat[];
   abilities: PokemonAbility[];
+  order: number;
+  url: string;
 };

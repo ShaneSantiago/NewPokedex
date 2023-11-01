@@ -1,4 +1,4 @@
-import { Box, Input } from "@chakra-ui/react";
+import { Input } from "@chakra-ui/react";
 import React from "react";
 
 const Filter = (props: any) => {

@@ -1,4 +1,4 @@
-import { Box, Select } from "@chakra-ui/react";
+import { Select } from "@chakra-ui/react";
 import React from "react";
 import { capitalizeFirstLetters } from "../Uteis/formatText";
 

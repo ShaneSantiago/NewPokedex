@@ -9,33 +9,24 @@ import {
   Divider,
   Stack,
   Progress,
-  Button,
-  Input,
 } from "@chakra-ui/react";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import bg2 from "../../assets/bg2.png";
-import {
-  StatName,
-  capitalizeFirstLetters,
-  translateText,
-} from "../../Components/Uteis/formatText";
-import {
-  attributeColors,
-  getColorForAttribute,
-  pokemonsType,
-} from "../../Components/Uteis/pokemonType";
+import { StatName, translateText } from "../../Components/Uteis/formatText";
 import Filter from "../../Components/Filter/Filter";
 import FilterButton from "../../Components/Filter/FilterButton";
 import logoPokemon from "../../assets/logoPokemon.png";
-import loadingPage from "../../assets/loadingPage.gif";
 import { Pokemon } from "../../Components/Types/Types";
+import {
+  getColorForAttribute,
+  pokemonsType,
+} from "../../Components/Uteis/pokemonType";
 
 const HomePage = () => {
   const [result, setResult] = useState<any>([]);
   const [filterType, setFilterType] = useState<string | null>(null);
   const [searchTerm, setSearchTerm] = useState<string>("");
-  const [visiblePokemon, setVisiblePokemon] = useState<number>(20);
   const [loading, setLoading] = useState<boolean>(false);
 
   useEffect(() => {
@@ -43,17 +34,15 @@ const HomePage = () => {
   }, []);
 
   useEffect(() => {
-    const newList: any = [];
+    const newList: Pokemon[] = [];
 
-    result.forEach((item: any) => {
+    result.forEach((item: Pokemon) => {
       axios
         .get(item.url)
         .then((res) => {
           newList.push(res.data);
           if (newList.length === 121) {
-            const orderedList = newList.sort(
-              (a: any, b: any) => a.order - b.order
-            );
+            const orderedList = newList.sort((a, b) => a.order - b.order);
             setResult(orderedList);
           }
         })
@@ -70,7 +59,7 @@ const HomePage = () => {
         setLoading(false);
       })
       .catch((error) => {
-        console.log("Erro", error);
+        // console.log("Erro", error);
       });
   };
 
@@ -129,7 +118,7 @@ const HomePage = () => {
               return (
                 pokemon.types &&
                 pokemon.types.some(
-                  (type: any) => type.type.name.toLowerCase() === filterType
+                  (type) => type.type.name.toLowerCase() === filterType
                 )
               );
             }
@@ -143,8 +132,8 @@ const HomePage = () => {
                 .includes(searchTerm.toLowerCase());
             }
           })
-          .map((pokemon: Pokemon, index: any) => (
-            <GridItem key={index}>
+          .map((pokemon: Pokemon) => (
+            <GridItem key={pokemon.name}>
               <Box
                 width="350px"
                 borderWidth="1px"
@@ -172,12 +161,13 @@ const HomePage = () => {
                     display="flex"
                     justifyContent="start"
                   >
-                    <Text color="white" fontWeight="500">
+                    <Text color="white" fontWeight="500" m="5px">
                       {pokemon.name.toUpperCase()}
                     </Text>
                   </Box>
                   {pokemon.sprites?.other?.dream_world?.front_default && (
                     <Image
+                      w="250px"
                       h="150px"
                       mt="80px"
                       src={pokemon.sprites.other.dream_world.front_default}
