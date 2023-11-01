@@ -10,7 +10,7 @@
 
 <!-- PROJECT SITE -->
 <h2 id="site">:earth_americas: Link do site </h2>
-<p>🔗 <a href="https://probable-slip.surge.sh/" target="_blank"> Pokedex </a>  </p>
-<!-- <a href="https://probable-slip.surge.sh/" onclick="return ! window.open(this.href);"> Open in a new window</a> -->
+<p>🔗 <a href="https://scandalous-stomach.surge.sh/" target="_blank"> Pokedex </a>  </p>
+<!-- <a href="https://scandalous-stomach.surge.sh/" onclick="return ! window.open(this.href);"> Open in a new window</a> -->
 
 
